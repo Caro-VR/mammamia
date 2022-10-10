@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import Navbar from "../componentes/Navbar";
-//import PizzasContext from "../context/PizzasProvider";
+import Context from '../Context';
 
 import '../css/Detalle.css';
 
 const Detalle = () => {
   const [pizzasDetail, setPizzaDetail] = useState({});
-  const { pizzas } = useContext(PizzasContext);
+  const { pizzas } = useContext(Context);
   const { id } = useParams();
 
   const obtenerDatos = () => {
@@ -34,4 +34,4 @@ const Detalle = () => {
   )
 }
 
-export default Carrito;
+export default Detalle;

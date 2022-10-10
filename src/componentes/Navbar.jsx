@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 import '../css/Navbar.css';
 import { useContext } from 'react';
-//import PizzasContext from "../context/PizzasProvider";
-//import { formatNumber } from "../helpers/formatNumber";
+import Context from '../Context';
+import { NumericFormat } from 'react-number-format';
 
 
 
 export default function Navbar() {
     const setActiveClass = ({ isActive }) => (isActive ? "active" : 'undefined');
 
-    const { carrito }= useContext(PizzasContext);
+    const { carrito } = useContext(Context);
     const total = carrito.reduce((a, { count, price }) => a + price * count, 0);
 
   return (
@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className="carrito">
             <Link className={setActiveClass} to="/carrito">
                 <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" width="50" height="50" className="d-inline-block align-top" alt=""/> Carrito
-                <h4 className="mb-0"> &#128722; {''} Total: ${formatNumber(total)}</h4>
+                <h4 className="mb-0"> &#128722; {''} Total: ${NumericFormat(total)}</h4>
             </Link>
         </div>
     </div>

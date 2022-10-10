@@ -1,11 +1,11 @@
 import React from 'react'
 import { useContext } from "react";
 import Navbar from "../componentes/Navbar";
-//import PizzasContext from "../context/PizzasProvider";
-//import { formatNumber} from "../helpers/formatNumber";
+import Context from '../Context';
+import { NumericFormat } from 'react-number-format';
 
 const DetallePedido = () => {
-    const {carrito, increment, decrement } = useContext(PizzasContext);
+    const {carrito, increment, decrement } = useContext(Context);
     const total = carrito.reduce((a, { count, price }) => a + price * count, 0);
 
 
@@ -27,7 +27,7 @@ const DetallePedido = () => {
 
                         <div className="d-flex justify-content-end align-items-center">
                             <h6 className="mb-0 p-2 text-success">
-                                ${formatNumber(producto.price * producto.count)}
+                                ${NumericFormat(producto.price * producto.count)}
                             </h6>
                             <button className="btn btn-danger" onClick={() => decrement(i)}>
                             </button>

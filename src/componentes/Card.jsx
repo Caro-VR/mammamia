@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-//import PizzasContext from '../context/PizzasProvider';
-//import { formatNumber } from '../helpers/formatNumber';
+import Context from '../Context';
+import { NumericFormat } from 'react-number-format';
 
 const Card = () => {
-    const { pizzas, addToCart } = useContext(PizzasContext);
+    const { pizzas, addToCart } = useContext(Context);
 
     const navigate = useNavigate();
 
@@ -24,9 +24,9 @@ const Card = () => {
 
                         <ListGroup variant="flush">
                             {pizza.ingredients.map((ingredient, i) =>
-                                <ListGroup.Item className="border-0" key={i}>
+                                <ListGroup.Item className="border-0 text-capitalize" key={i}>
                                     <img src={process.env.PUBLIC_URL + '/logo32.png'} width="24" height="24" className="d-inline-block aling-top ms-2" />
-                                    {capitalize(ingredient)}
+                                    {(ingredient)}
                                 </ListGroup.Item>
                             )}
                         </ListGroup>
