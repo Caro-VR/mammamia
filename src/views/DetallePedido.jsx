@@ -1,18 +1,17 @@
 import React from 'react'
 import { useContext } from "react";
 import Navbar from "../componentes/Navbar";
-import Context from '../Context';
+import PizzasContext from '../context/PizzasContext';
 import { NumericFormat } from 'react-number-format';
 
 const DetallePedido = () => {
-    const {carrito, increment, decrement } = useContext(Context);
+    const {carrito, increment, decrement } = useContext(PizzasContext);
     const total = carrito.reduce((a, { count, price }) => a + price * count, 0);
 
 
 
   return (
     <>
-
         <Navbar />
         <div className="carrito p-5">
         <div className="detalles bg-light w-75 m-auto p-5">

@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import Navbar from "../componentes/Navbar";
-import Context from '../Context';
+import PizzasContext from '../context/PizzasContext';
 
 import '../css/Detalle.css';
 
 const Detalle = () => {
   const [pizzasDetail, setPizzaDetail] = useState({});
-  const { pizzas } = useContext(Context);
+  const { pizzas } = useContext(PizzasContext);
   const { id } = useParams();
 
   const obtenerDatos = () => {

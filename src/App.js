@@ -1,24 +1,39 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Context from "./Context";
+import Navbar from './componentes/Navbar';
+import PizzasContext from "./context/PizzasContext";
 import Detalle from './views/Detalle';
 import DetallePedido from "./views/DetallePedido";
 import Home from "./views/Home";
 import NotFound from './views/NotFound';
 
+export default function App() {
+  const [pizzas, setPizzas] = useState([]);
+  
+  const endpoint = "/pizzas.json";
 
-function App() {
+  const  getPizzas = async() => {
+    const res = await fetch(endpoint);
+    const data = await res.json();
+    console.log(data);
+    setPizzas(data);
+  }
+  
+  useEffect(() => {
+    getPizzas();
+  }, []);
+
   return (
         <BrowserRouter>
-          <Context.Provider>
+          <PizzasContext.Provider value={{ pizzas, setPizzas }}>
+            <Navbar></Navbar>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/pizzas/:id" element={<Detalle/>} /> 
               <Route path="/carrito" element={<DetallePedido />} />
               <Route path="*" element={<NotFound />} />  
             </Routes>
-          </Context.Provider>
+          </PizzasContext.Provider>
         </BrowserRouter> 
   );
-}
-
-export default App;
+};
