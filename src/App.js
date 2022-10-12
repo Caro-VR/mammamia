@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './componentes/Navbar';
-import PizzasContext from "./context/PizzasContext";
+import PizzasContext from "./PizzasContext";
 import Detalle from './views/Detalle';
 import DetallePedido from "./views/DetallePedido";
 import Home from "./views/Home";
@@ -15,7 +15,6 @@ export default function App() {
   const  getPizzas = async() => {
     const res = await fetch(endpoint);
     const data = await res.json();
-    console.log(data);
     setPizzas(data);
   }
   
@@ -26,13 +25,13 @@ export default function App() {
   return (
         <BrowserRouter>
           <PizzasContext.Provider value={{ pizzas, setPizzas }}>
-            <Navbar></Navbar>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/pizzas/:id" element={<Detalle/>} /> 
-              <Route path="/carrito" element={<DetallePedido />} />
-              <Route path="*" element={<NotFound />} />  
-            </Routes>
+              <Navbar></Navbar>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/pizzas/:id" element={<Detalle/>} /> 
+                <Route path="*" element={<NotFound />} />
+                <Route path="/carrito" element={<DetallePedido />} />
+              </Routes>
           </PizzasContext.Provider>
         </BrowserRouter> 
   );

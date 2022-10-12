@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../css/Navbar.css';
 import { useContext } from 'react';
-import Context from '../context/PizzasContext';
+import Context from '../PizzasContext';
 import { NumericFormat } from 'react-number-format';
 
 
@@ -23,7 +23,7 @@ export default function Navbar() {
         <div className="carrito">
             <NavLink className={setActiveClass} to="/carrito">
                 {/* <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" width="50" height="50" className="d-inline-block align-top" alt=""/> Carrito */}
-                <h4 className="mb-0"> &#128722; {''} Total: ${NumericFormat(total)}</h4>
+                <h4 className="mb-0"> &#128722; {''} Carrito: ${NumericFormat(total)}</h4>
             </NavLink>
         </div>
     </div>

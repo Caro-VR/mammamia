@@ -1,15 +1,13 @@
 import Card from '../componentes/Card';
 import Header from '../componentes/Header';
-import Navbar from '../componentes/Navbar';
+import DetallePedido from './DetallePedido';
+import NotFound from './NotFound';
 
 
 
 const Home = () => {
-
- 
     return (
         <>
-            <Navbar />
             <Header />
             <Card />  
         </>

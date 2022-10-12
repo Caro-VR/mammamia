@@ -1,0 +1,26 @@
+
+.card-title {
+    text-align: center;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #157347;
+    border-color: #146c43;
+}
+
+.btn-warning:hover {
+    color: #000;
+    background-color: #ffca2c;
+    border-color: #ffc720;
+  
+    
+}
+
+.btn-warning{
+    margin-left: 17%;
+}
+
+.text-center {
+    color: darkred;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from "react";
 import Navbar from "../componentes/Navbar";
-import PizzasContext from '../context/PizzasContext';
+import PizzasContext from '../PizzasContext';
 import { NumericFormat } from 'react-number-format';
 
 const DetallePedido = () => {
