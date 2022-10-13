@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-//import Navbar from "../componentes/Navbar";
 import PizzasContext from '../PizzasContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +9,7 @@ import { useEffect } from 'react';
 
 const Detalle = () => {
   const [pizza, setPizza] = useState(null);
+  const { pizzas, addToCart } = useContext(PizzasContext);
   const { id } = useParams();
   const endpoint = "/pizzas.json";
   const navigate = useNavigate();
@@ -20,18 +20,13 @@ const Detalle = () => {
 
   useEffect(() => {
     const getPizza = async () => {
-      const res = await fetch(endpoint);
-      const data = await res.json();
-
-      console.log(data);
-  
-      const result = data.filter(obj => 
+      // const res = await fetch(endpoint);
+      // const data = await res.json();
+      const result = pizzas.filter(obj => 
         obj.id === id
       )
       setPizza(result);
-      console.log(result);
     }
-
     getPizza();
   }, []);
 
@@ -68,8 +63,8 @@ const Detalle = () => {
                 <h2 className="text-pizza">Precio $ {pizza[0].price}</h2>
                 <hr />
                 <div className="card-btnpizza">
-              
-                  <button className="btn-pizza btn-success" variant="dark" onClick={ () => navigate('/pizza/${pizza.id}') }>Añadir ✔</button>
+                  {/* <select type="number" value={1} disabled /> */}
+                  <button className="btn-pizza btn-success" variant="dark" onClick={ () => addToCart(pizza[0]) }>Añadir ✔</button>
                 </div>
               </div>
             </div>

@@ -2,14 +2,12 @@ import { useContext, useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import PizzasContext from '../PizzasContext';
-import PizzaProvider from '../PizzasContext';
+//import { PizzaProvider } from '../PizzasContext';
 import '../css/Card.css';
 //import { NumericFormat } from 'react-number-format';
 
 const Card = () => {
-    //const { pizzas, addToCart } = useContext(Context);
-    const { pizzas } = useContext(PizzasContext);
-    const { addItemToCart } = useContext(PizzaProvider);
+    const { pizzas, addToCart } = useContext(PizzasContext);
     const navigate = useNavigate();
 
     return (
@@ -39,7 +37,7 @@ const Card = () => {
                             <h2 className="text-center pt-2 pb-3">$ {pizza.price}</h2>
                             <div className="card-btn">
                                 <button className="btn btn-success" variant="dark" onClick={ () => navigate(`/pizzas/${pizza.id}`) }>Ver Más 👀</button>
-                                <button  className="btn btn-warning" variant="danger" onClick={() => addItemToCart(pizza) }>Agregar 🛒</button> 
+                                <button  className="btn btn-warning" variant="danger" onClick={() => addToCart(pizza) }>Agregar 🛒</button>
                             </div>
                         </div>
                     </div>
